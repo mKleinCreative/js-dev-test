@@ -32,6 +32,10 @@ class AllRepos extends Component {
         console.log(this.state)
     }
 
+    setLanguage = (lang:any) => {
+        this.setState({langSelect: lang})
+    }
+
     renderNav = () => {
         return (
             <Navbar
@@ -44,11 +48,17 @@ class AllRepos extends Component {
                     outDuration: 200
                 }}
             >
+                <NavItem
+                    key={8675309}
+                    onClick={this.setLanguage}
+                >
+                    None
+                </NavItem>
                 {this.state.languages.map((language:string, i:number) => {
                     return (
                         <NavItem 
-                            href=""
                             key={i}
+                            onClick={() => this.setState({langSelect: language})}
                             >
                             {language}
                         </NavItem>
@@ -60,8 +70,8 @@ class AllRepos extends Component {
     }
 
     showRepos = () => {
-        if (this.state.repos.allRepos) {
-            let calledRepos:any = this.state.repos
+        let calledRepos: any = this.state.repos
+        if (calledRepos.allRepos && this.state.langSelect === "") {
             return calledRepos.allRepos.map((repo:any, i:number) => {
                 return (
                     <Card
@@ -75,6 +85,23 @@ class AllRepos extends Component {
                         Forks: {repo.forks}
                     </Card>
                 )
+            })
+        } else if (calledRepos.allRepos && this.state.langSelect !== "") {
+            return calledRepos.allRepos.map((repo: any, i: number) => {
+                if (repo.language === this.state.langSelect) {
+                    return (
+                        <Card
+                            title={`${repo.full_name}`}
+                            className="blue-grey darken-1"
+                            closeIcon={<Icon>closeIcon</Icon>}
+                            key={repo.id}
+                        >
+                            {repo.description || "No description given"}<br />
+                            Primary Language: {repo.language}<br />
+                            Forks: {repo.forks}
+                        </Card>
+                    )
+                }
             })
         } else {
             return <div>Loading...</div>
