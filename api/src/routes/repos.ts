@@ -22,14 +22,14 @@ repos.get('/', async (req, res) => {
   res.header('Content-Type', 'application/json');
   const local = await getLocal;
 
-  let dataResponse = await axios.get(
+  let dataResponse:any = await axios.get(
     'https://api.github.com/users/silverorange/repos'
   );
 
   dataResponse = dataResponse.data.filter((repo: RepoJson) => {
     return repo.fork === false;
   });
-  const allRepos = { ...dataResponse, local };
+  const allRepos = [ ...dataResponse, ...local] ;
   res.status(200);
   res.send({ allRepos });
 });

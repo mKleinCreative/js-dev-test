@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import AllRepos from './components/AllRepos'
-import { Row, Col, Card, Icon } from 'react-materialize'
+import AllRepos from './components/AllRepos';
+import { Row } from 'react-materialize';
 
 
 
@@ -10,7 +9,7 @@ function App() {
     <div>
       <header>
         <Row>
-          <AllRepos/>
+          <AllRepos />
         </Row>
       </header>
     </div>
