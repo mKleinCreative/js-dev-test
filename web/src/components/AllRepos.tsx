@@ -1,4 +1,4 @@
-import { Card, Icon, Col, Navbar, NavItem } from 'react-materialize';
+import { Card, Icon, Col, Navbar, NavItem, Button } from 'react-materialize';
 import 'materialize-css'
 import React, { Component } from 'react';
 import API from '../utils/API';
@@ -7,7 +7,10 @@ class AllRepos extends Component {
     state:any = {
         repos: [],
         languages: [],
-        langSelect: ""
+        langSelect: "",
+        commitMessage: "",
+        commitAuthor: "",
+        commitDate: ""
     };
 
     componentDidMount() {
@@ -17,6 +20,20 @@ class AllRepos extends Component {
     componentDidUpdate() {
         this.renderNav();
         this.showRepos();
+    }
+
+    getCommits = async (fullName:any) => {
+        let commits = await API.getCommits(fullName);
+        let relevantInfo:any = [commits.author.name, commits.author.date, commits.message];
+        this.setState({commitMessage: relevantInfo[2], commitAuthor: relevantInfo[0], commitDate: relevantInfo[1]});
+    }
+
+    handleCommitData = async (commitData:any) => {
+        console.log("in handle commit data", commitData);
+        
+        commitData.map((info:any) => {
+            return (<div>{info}</div>);
+        });
     }
 
     getRepos = async () => {
@@ -50,7 +67,7 @@ class AllRepos extends Component {
             >
                 <NavItem
                     key={8675309}
-                    onClick={this.setLanguage}
+                    onClick={() => this.setLanguage("")}
                 >
                     None
                 </NavItem>
@@ -77,9 +94,15 @@ class AllRepos extends Component {
                     <Card
                         title={`${repo.full_name}`}
                         className="blue-grey darken-1"
-                        closeIcon={<Icon>closeIcon</Icon>}
+                        closeIcon={<Icon>x</Icon>}
                         key={repo.id}
+                        reveal={<div>{this.state.commitMessage}</div> || <div>""</div>}
+                        revealIcon={<Button
+                            className={'right'}
+                            onClick={() => this.getCommits(repo.full_name)}
+                        />}
                     >
+                        
                         {repo.description || "No description given"}<br />
                         Primary Language: {repo.language}<br/>
                         Forks: {repo.forks}
@@ -93,8 +116,12 @@ class AllRepos extends Component {
                         <Card
                             title={`${repo.full_name}`}
                             className="blue-grey darken-1"
-                            closeIcon={<Icon>closeIcon</Icon>}
+                            closeIcon={<Icon>x</Icon>}
                             key={repo.id}
+                            reveal={(this.getCommits(repo.full_name))}
+                            revealIcon={<Button
+                                onClick={() => this.getCommits(repo.full_name)}
+                            />}
                         >
                             {repo.description || "No description given"}<br />
                             Primary Language: {repo.language}<br />
@@ -111,7 +138,7 @@ class AllRepos extends Component {
     render(){
         return (
             <Col
-                m={6}
+                m={9}
                 s={12}>
                     {this.renderNav()}
                     {this.showRepos()}

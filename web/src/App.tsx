@@ -1,6 +1,5 @@
 import React from 'react';
 import AllRepos from './components/AllRepos';
-// import LanguageFilter from './components/LanguageFilter';
 import { Row } from 'react-materialize';
 
 
@@ -11,7 +10,6 @@ function App() {
     <div>
       <header>
         <Row>
-          {/* <LanguageFilter /> */}
           <AllRepos />
         </Row>
       </header>
