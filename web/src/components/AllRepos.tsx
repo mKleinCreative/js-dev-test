@@ -29,7 +29,6 @@ class AllRepos extends Component {
       }
     });
     this.setState({ repos: pulledRepos.data, languages: allLanguages });
-    console.log(this.state);
   };
 
   setLanguage = (lang: string) => {
@@ -77,6 +76,7 @@ class AllRepos extends Component {
             description={repo.description}
             language={repo.language}
             forks={repo.forks}
+            key={repo.id + (i + 1)}
           />
         );
       });

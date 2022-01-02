@@ -42,14 +42,14 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
   getCommits = async (fullName: string) => {
     let commits = await API.getCommits(fullName);
     let relevantInfo: any = [
-      commits.author.name,
-      commits.author.date,
-      commits.message,
+    commits.author.name,
+    commits.author.date,
+    commits.message,
     ];
     this.setState({
-      commitMessage: relevantInfo[2],
-      commitAuthor: relevantInfo[0],
-      commitDate: relevantInfo[1],
+    commitMessage: relevantInfo[2],
+    commitAuthor: relevantInfo[0],
+    commitDate: relevantInfo[1],
     });
   };
 
