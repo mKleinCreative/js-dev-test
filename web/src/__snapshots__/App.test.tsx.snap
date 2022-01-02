@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <header>
+    <div
+      className="row"
+    >
+      <div
+        className="col s12 m10 offset-m1"
+      >
+        <nav
+          className=""
+        >
+          <div
+            className="nav-wrapper"
+          >
+            <div
+              className="brand-logo"
+            >
+              Filter by language
+            </div>
+            <a
+              className="sidenav-trigger"
+              data-target="mobile-nav"
+              href="#!"
+            >
+              <i
+                className="material-icons"
+              >
+                menu
+              </i>
+            </a>
+            <ul
+              className="hide-on-med-and-down right"
+            >
+              <li>
+                <a
+                  onClick={[Function]}
+                >
+                  None
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <ul
+          className="sidenav right"
+          id="mobile-nav"
+        >
+          <li>
+            <a
+              onClick={[Function]}
+            >
+              None
+            </a>
+          </li>
+        </ul>
+        <div>
+          Loading...
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+`;

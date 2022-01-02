@@ -2,9 +2,6 @@ import React from 'react';
 import AllRepos from './components/AllRepos';
 import { Row } from 'react-materialize';
 
-
-
-
 function App() {
   return (
     <div>

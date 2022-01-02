@@ -16,5 +16,5 @@
     "typeRoots": ["./node_modules/@types", "./src/typings"]
   },
   "exclude": ["node_modules"],
-  "include": ["src"]
+  "include": ["src", "../web/src/setupProxy.js"]
 }

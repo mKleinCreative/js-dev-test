@@ -1,0 +1,16 @@
+{
+  "name": "js-dev-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mKleinCreative/js-dev-test.git",
+  "author": "Michael <miketheklein@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "concurrently \"yarn run server\" \"yarn run client\"",
+    "server": "cd api && yarn start",
+    "client": "cd web && yarn start"
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1"
+  }
+}
