@@ -57,7 +57,7 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
             <Card
                 title={`${fullName}`}
                 className="blue-grey darken-1"
-                closeIcon={<Icon>x</Icon>}
+                closeIcon={<Icon>close</Icon>}
                 key={id}
                 reveal={
                     <div>
@@ -67,7 +67,7 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
                     </div>
                      || <div>""</div>
                 }
-                revealIcon={<Icon>Commit History</Icon>}
+                revealIcon={<Icon>description</Icon>}
             >
                 {description || "No description given"}<br />
                 Primary Language: {language}<br />

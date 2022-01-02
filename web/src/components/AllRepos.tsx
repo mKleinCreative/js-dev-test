@@ -41,7 +41,8 @@ class AllRepos extends Component {
         return (
             <Navbar
                 alignLinks="right"
-                menuIcon={<Icon>Filter by Language</Icon>}
+                brand={<div>Filter by language</div>}
+                menuIcon={<Icon>menu</Icon>}
                 options={{
                     edge: 'left',
                     inDuration: 250,
@@ -106,8 +107,10 @@ class AllRepos extends Component {
     render(){
         return (
             <Col
-                m={9}
-                s={12}>
+                m={10}
+                s={12}
+                offset={'m1'}
+                >
                     {this.renderNav()}
                     {this.showRepos()}
             </Col>
