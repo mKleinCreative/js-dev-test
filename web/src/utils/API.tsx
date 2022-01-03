@@ -22,14 +22,17 @@ export default {
       );
       return commits.data[0].commit;
     } catch (error) {
-      console.error('error in getCommits meaning there are none :::> \n', error);
+      console.error(
+        'error in getCommits meaning there are none :::> \n',
+        error
+      );
       return {
         author: {
-          name: "No commit history",
-          date: ""
+          name: 'No commit history',
+          date: '',
         },
-        message: ""
-      }
+        message: '',
+      };
     }
   },
 };

@@ -23,7 +23,8 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
   }
   state = {
     commitMessage: '',
-    commitAuthor: '',    commitDate: '',
+    commitAuthor: '',
+    commitDate: '',
   };
   static defaultProps: Partial<RepoContainerProps> = {
     fullName: '',
@@ -37,9 +38,9 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
   getCommits = async (fullName: string) => {
     let commits = await API.getCommits(fullName);
     this.setState({
-        commitMessage: commits.message,
-        commitAuthor: commits.author.name,
-        commitDate: commits.author.date,
+      commitMessage: commits.message,
+      commitAuthor: commits.author.name,
+      commitDate: commits.author.date,
     });
   };
 
@@ -62,11 +63,7 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
           ) || <div>""</div>
         }
         revealIcon={
-            <Icon
-                onClick={() => this.getCommits(fullName)}
-            >
-                description
-            </Icon>
+          <Icon onClick={() => this.getCommits(fullName)}>description</Icon>
         }
       >
         {description || 'No information for the current repo given'}

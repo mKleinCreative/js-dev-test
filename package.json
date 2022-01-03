@@ -11,6 +11,7 @@
     "client": "cd web && yarn start"
   },
   "dependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "concurrently": "^6.5.1"
   }
 }

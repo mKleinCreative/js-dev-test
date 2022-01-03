@@ -5,7 +5,6 @@
     "object-literal-sort-keys": false,
     "no-console": false,
     "interface-name": false,
-    // tslint-react exceptions
     "jsx-no-lambda": false
   }
 }

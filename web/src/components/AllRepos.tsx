@@ -58,8 +58,7 @@ class AllRepos extends Component {
               key={i}
               className={`${language}-toggle`}
               onClick={() => {
-                this.setState({ langSelect: language }
-                )
+                this.setState({ langSelect: language });
               }}
             >
               {language}
