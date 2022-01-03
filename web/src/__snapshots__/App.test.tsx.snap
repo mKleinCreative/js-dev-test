@@ -1,6 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`A repo container renders correctly 1`] = `
+<div
+  className="blue-grey lighten-1 card"
+>
+  <div
+    className="card-content"
+  >
+    <span
+      className="card-title activator"
+    >
+      full_name
+      <i
+        className="material-icons right"
+        onClick={[Function]}
+      >
+        description
+      </i>
+    </span>
+    <div>
+      description
+      <br />
+      Primary Language: 
+      language
+      <br />
+      Forks: 
+      20
+    </div>
+  </div>
+  <div
+    className="card-reveal"
+  >
+    <span
+      className="card-title"
+    >
+      full_name
+      <i
+        className="material-icons right"
+      >
+        close
+      </i>
+    </span>
+    <div>
+      <div>
+        Author: 
+        
+      </div>
+      <div>
+        Date: 
+        
+      </div>
+      <br />
+      <div>
+        Detais: 
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`whole app renders correctly 1`] = `
 <div>
   <header>
     <div
@@ -10,7 +70,7 @@ exports[`renders correctly 1`] = `
         className="col s12 m10 offset-m1"
       >
         <nav
-          className=""
+          className="blue-grey darken-3"
         >
           <div
             className="nav-wrapper"

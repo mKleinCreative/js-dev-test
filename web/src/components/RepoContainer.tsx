@@ -23,33 +23,23 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
   }
   state = {
     commitMessage: '',
-    commitAuthor: 'No commit history',
-    commitDate: '',
+    commitAuthor: '',    commitDate: '',
   };
   static defaultProps: Partial<RepoContainerProps> = {
     fullName: '',
     state: {
       commitMessage: '',
-      commitAuthor: 'No commit history',
+      commitAuthor: '',
       commitDate: '',
     },
   };
 
-  componentDidMount() {
-    this.getCommits(this.props.fullName);
-  }
-
   getCommits = async (fullName: string) => {
     let commits = await API.getCommits(fullName);
-    let relevantInfo: any = [
-    commits.author.name,
-    commits.author.date,
-    commits.message,
-    ];
     this.setState({
-    commitMessage: relevantInfo[2],
-    commitAuthor: relevantInfo[0],
-    commitDate: relevantInfo[1],
+        commitMessage: commits.message,
+        commitAuthor: commits.author.name,
+        commitDate: commits.author.date,
     });
   };
 
@@ -58,23 +48,28 @@ class RepoContainer extends Component<RepoContainerProps, {}> {
     return (
       <Card
         title={`${fullName}`}
-        className="blue-grey darken-1"
+        className="blue-grey lighten-1"
         closeIcon={<Icon>close</Icon>}
         key={id}
         reveal={
           (
             <div>
-              <div>{this.state.commitAuthor}</div>
-              <div>{this.state.commitDate}</div>
+              <div>Author: {this.state.commitAuthor}</div>
+              <div>Date: {this.state.commitDate}</div>
               <br />
-              <div>{this.state.commitMessage}</div>
-              <br />
+              <div>Detais: {this.state.commitMessage}</div>
             </div>
           ) || <div>""</div>
         }
-        revealIcon={<Icon>description</Icon>}
+        revealIcon={
+            <Icon
+                onClick={() => this.getCommits(fullName)}
+            >
+                description
+            </Icon>
+        }
       >
-        {description || 'No description given'}
+        {description || 'No information for the current repo given'}
         <br />
         Primary Language: {language}
         <br />

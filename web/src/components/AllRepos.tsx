@@ -41,6 +41,7 @@ class AllRepos extends Component {
         alignLinks="right"
         brand={<div>Filter by language</div>}
         menuIcon={<Icon>menu</Icon>}
+        className="blue-grey darken-3"
         options={{
           edge: 'left',
           inDuration: 250,
@@ -55,7 +56,11 @@ class AllRepos extends Component {
           return (
             <NavItem
               key={i}
-              onClick={() => this.setState({ langSelect: language })}
+              className={`${language}-toggle`}
+              onClick={() => {
+                this.setState({ langSelect: language }
+                )
+              }}
             >
               {language}
             </NavItem>
@@ -90,6 +95,7 @@ class AllRepos extends Component {
               description={repo.description}
               language={repo.language}
               forks={repo.forks}
+              key={repo.id + (i + 1)}
             />
           );
         }

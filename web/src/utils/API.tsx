@@ -7,7 +7,7 @@ const headers = {
 export default {
   getRepos: async function () {
     try {
-      const repos = await axios.get('http://localhost:4000/repos', { headers });
+      const repos = await axios.get('/repos', { headers });
       return repos;
     } catch (error) {
       console.error('error in getRepos ::::> \n', error);
@@ -20,10 +20,16 @@ export default {
         `https://api.github.com/repos/${fullName}/commits`,
         { headers }
       );
-
       return commits.data[0].commit;
     } catch (error) {
-      console.error('error in getCommits :::> \n', error);
+      console.error('error in getCommits meaning there are none :::> \n', error);
+      return {
+        author: {
+          name: "No commit history",
+          date: ""
+        },
+        message: ""
+      }
     }
   },
 };
